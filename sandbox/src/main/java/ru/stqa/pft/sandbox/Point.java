@@ -8,7 +8,7 @@ import java.lang.Math;
 public class Point {
 
   public double x;
-  public double y;nf
+  public double y;
 
   public Point(double x, double y) {
     this.x = x;
@@ -17,6 +17,6 @@ public class Point {
 
 
   public double distance2(Point other){
-  return Math.sqrt((this.x - x)*(this.x - x)+(this.y - y)*(this.y - y));
+  return Math.sqrt((x - other.x)*(x - other.x)+(y - other.y)*(y - other.y));
 }
 }
