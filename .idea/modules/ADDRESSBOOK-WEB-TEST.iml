@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id="ADDRESSBOOK-WEB-TEST" external.linked.project.path="$MODULE_DIR$/../../ADDRESSBOOK-WEB-TEST" external.root.project.path="$MODULE_DIR$/../../ADDRESSBOOK-WEB-TEST" external.system.id="GRADLE" external.system.module.group="" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../ADDRESSBOOK-WEB-TEST">
+      <excludeFolder url="file://$MODULE_DIR$/../../ADDRESSBOOK-WEB-TEST/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/../../ADDRESSBOOK-WEB-TEST/build" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

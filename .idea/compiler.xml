@@ -19,6 +19,8 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="ADDRESSBOOK-WEB-TEST_main" target="1.8" />
+      <module name="ADDRESSBOOK-WEB-TEST_test" target="1.8" />
       <module name="sandbox_main" target="1.8" />
       <module name="sandbox_test" target="1.8" />
     </bytecodeTargetLevel>
