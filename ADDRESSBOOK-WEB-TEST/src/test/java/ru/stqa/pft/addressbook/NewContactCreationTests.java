@@ -10,7 +10,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.*;
 
 
-public class NewContact {
+public class NewContactCreationTests {
   FirefoxDriver wd;
 
   @BeforeMethod
