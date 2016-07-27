@@ -9,7 +9,11 @@ import org.testng.annotations.BeforeMethod;
 import java.util.concurrent.TimeUnit;
 
 /**
+<<<<<<< HEAD
  * Created by irener on 7/27/16.
+=======
+ * Created by irener on 7/26/16.
+>>>>>>> origin/master
  */
 public class TestBase {
   FirefoxDriver wd;
@@ -75,6 +79,7 @@ public class TestBase {
   public void tearDown() {
       wd.quit();
   }
+<<<<<<< HEAD
 
   protected void deleteSelectedGroups() {
     wd.findElement(By.name("delete")).click();
@@ -85,4 +90,6 @@ public class TestBase {
       wd.findElement(By.name("selected[]")).click();
     }
   }
+=======
+>>>>>>> origin/master
 }
