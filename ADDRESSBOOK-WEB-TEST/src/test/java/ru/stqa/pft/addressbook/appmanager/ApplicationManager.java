@@ -14,7 +14,10 @@ public class ApplicationManager {
   private NavigationHelper navigationHelper;
   private GroupHelper groupHelper ;
   private SessionHelper sessionHelper;
+  private ContactHelper contactHelper;
 
+  public ApplicationManager() {
+  }
 
 
   public void init() {
@@ -28,7 +31,6 @@ public class ApplicationManager {
   }
 
 
-
   public void stop() {
     wd.quit();
   }
@@ -39,5 +41,9 @@ public class ApplicationManager {
 
   public NavigationHelper getNavigationHelper() {
     return navigationHelper;
+  }
+
+  public ContactHelper getContactHelper() {
+    return contactHelper;
   }
 }

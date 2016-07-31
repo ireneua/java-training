@@ -1,39 +1,30 @@
-package ru.stqa.pft.addressbook.tests;
+package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import ru.stqa.pft.addressbook.appmanager.ApplicationManager;
 import ru.stqa.pft.addressbook.model.ContactData;
 
-import java.util.concurrent.TimeUnit;
-
 /**
- * Created by irener on 7/27/16
+ * Created by irener on 7/31/16.
  */
+public class ContactHelper extends HelperBase {
 
-public class TestBase {
-
-  protected final ApplicationManager app = new ApplicationManager();
-  FirefoxDriver wd;
-
-  public static boolean isAlertPresent(FirefoxDriver wd) {
-    try {
-      wd.switchTo().alert();
-      return true;
-    } catch (NoAlertPresentException e) {
-      return false;
-    }
+  public ContactHelper(FirefoxDriver wd) {
+    super(wd);
+  }
+  public void returnToHomePage() {
+    wd.findElement(By.linkText("home page")).click();
   }
 
-  @BeforeMethod
-  public void setUp() throws Exception {
-    app.init();
+  public void goToHomePage(){
+    wd.findElement(By.linkText(("home"))).click();
   }
 
-  /*public void fillContactData(ContactData contactData) {
+  public void initContactCreation() {
+    wd.findElement(By.linkText("add new")).click();
+  }
+
+  public void fillContactData(ContactData contactData) {
     wd.findElement(By.name("firstname")).click();
     wd.findElement(By.name("firstname")).clear();
     wd.findElement(By.name("firstname")).sendKeys(contactData.getName());
@@ -73,27 +64,7 @@ public class TestBase {
     wd.findElement(By.name("byear")).clear();
     wd.findElement(By.name("byear")).sendKeys(contactData.getYear());
     wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
-  }*/
-
-
-  /*public void initContactCreation() {
-    wd.findElement(By.linkText("add new")).click();
-  }*/
-
-  /*protected void login() {
-    wd.findElement(By.name("user")).click();
-    wd.findElement(By.name("user")).clear();
-    wd.findElement(By.name("user")).sendKeys("admin");
-    wd.findElement(By.name("pass")).click();
-    wd.findElement(By.name("pass")).clear();
-    wd.findElement(By.name("pass")).sendKeys("secret");
-    wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
   }
-  */
 
-  @AfterMethod
-  public void tearDown() {
-    app.stop();
-  }
 
 }
