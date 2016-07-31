@@ -35,7 +35,7 @@ public class ContactData {
     return middlename;
   }
 
-  public String getLastaname() {
+  public String getLastname() {
     return lastaname;
   }
 
