@@ -45,7 +45,10 @@ public class ContactHelper extends HelperBase {
   }
 
   public void selectContact(){
-    click(By.xpath(".//*[@id='5']"));
+    if (!wd.findElement(By.name("selected[]")).isSelected()) {
+      wd.findElement(By.name("selected[]")).click();
+    }
+    click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
   }
 
   public void editContact(){
@@ -54,6 +57,7 @@ public class ContactHelper extends HelperBase {
 
   public void deleteContact(){
     click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
+    wd.switchTo().alert().accept();
   }
 
   public void saveUpdatedContact() {
