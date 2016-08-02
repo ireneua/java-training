@@ -18,12 +18,17 @@ public class ApplicationManager {
   private GroupHelper groupHelper;
   private SessionHelper sessionHelper;
   private ContactHelper contactHelper;
+  private String browser;
 
   public ApplicationManager() {
   }
 
+  public ApplicationManager(String browser) {
+    this.browser = browser;
+  }
+
   public void init() {
-    String browser = BrowserType.FIREFOX;
+
     if (browser == BrowserType.FIREFOX) {
       wd = new FirefoxDriver();
     } else if (browser == BrowserType.CHROME) {
