@@ -1,6 +1,7 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import ru.stqa.pft.addressbook.model.ContactData;
 
@@ -62,4 +63,5 @@ public class ContactHelper extends HelperBase {
   public void saveUpdatedContact() {
     click(By.name("update"));
   }
+
 }
