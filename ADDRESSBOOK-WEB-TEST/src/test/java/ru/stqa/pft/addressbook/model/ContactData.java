@@ -124,4 +124,7 @@ public class ContactData {
   }
 
 
+  public String getId() {
+    return id;
+  }
 }
