@@ -52,8 +52,9 @@ public class ContactHelper extends HelperBase {
     wd.findElements(By.name("selected[]")).get(i).click();
   }
 
-  public void editContact() {
-    click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+  public void editContact(int x) {
+    wd.findElements(By.xpath(".//*[@id='maintable']/tbody/tr[*]/td[8]/a/img")).get(x).click();
+    //click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
   }
 
   public void deleteContact() {
