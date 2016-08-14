@@ -1,9 +1,10 @@
 package ru.stqa.pft.addressbook.model;
 
 public class ContactData {
+  private final String id;
   private final String name;
   private final String middlename;
-  private final String lastaname;
+  private final String lastname;
   private final String nickname;
   private final String title;
   private final String company;
@@ -13,18 +14,42 @@ public class ContactData {
   private final String email22;
   private final String year;
 
-  public ContactData(String name, String middlename, String lastaname, String nickname, String title, String company, String home, String email, String email2, String email22, String year) {
+
+
+  public ContactData(String id, String name, String middlename, String lastname, String nickname, String title, String company, String home, String email, String email2, String email22, String year) {
+    this.id = id;
     this.name = name;
     this.middlename = middlename;
-    this.lastaname = lastaname;
+    this.lastname = lastname;
     this.nickname = nickname;
     this.title = title;
+
     this.company = company;
     this.home = home;
     this.email = email;
     this.email2 = email2;
     this.email22 = email22;
     this.year = year;
+  }
+
+  public ContactData(String name, String middlename, String lastname, String nickname, String title, String company, String home, String email, String email2, String email22, String year) {
+    this.id = null;
+    this.name = name;
+    this.middlename = middlename;
+    this.lastname = lastname;
+    this.nickname = nickname;
+    this.title = title;
+
+    this.company = company;
+    this.home = home;
+    this.email = email;
+    this.email2 = email2;
+    this.email22 = email22;
+    this.year = year;
+  }
+
+  public String getId() {
+    return id;
   }
 
   public String getName() {
@@ -36,7 +61,7 @@ public class ContactData {
   }
 
   public String getLastname() {
-    return lastaname;
+    return lastname;
   }
 
   public String getNickname() {
@@ -70,4 +95,36 @@ public class ContactData {
   public String getYear() {
     return year;
   }
+
+  @Override
+  public String toString() {
+    return "ContactData{" +
+            "id='" + id + '\'' +
+            ", name='" + name + '\'' +
+            ", middlename='" + middlename + '\'' +
+            ", lastname='" + lastname + '\'' +
+            '}';
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    ContactData that = (ContactData) o;
+
+    if (id != null ? !id.equals(that.id) : that.id != null) return false;
+    if (name != null ? !name.equals(that.name) : that.name != null) return false;
+    return lastname != null ? lastname.equals(that.lastname) : that.lastname == null;
+
+  }
+
+  @Override
+  public int hashCode() {
+    int result = id != null ? id.hashCode() : 0;
+    result = 31 * result + (name != null ? name.hashCode() : 0);
+    result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
+    return result;
+  }
+
 }
