@@ -14,7 +14,6 @@ public class GroupCreationTests extends TestBase {
     int before = app.getGroupHelper().getGroupCount();
     app.getGroupHelper().createGroup(new GroupData("jaga", null, null));
     int after = app.getGroupHelper().getGroupCount();
-
     Assert.assertEquals(before +1, after);
   }
 
