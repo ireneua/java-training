@@ -45,10 +45,11 @@ public class ContactHelper extends HelperBase {
 
   }
 
-  public void selectContact() {
-    if (!wd.findElement(By.name("selected[]")).isSelected()) {
+  public void selectContact(int i) {
+    wd.findElements(By.name("selected[]")).get(i).click();
+    /*if (!wd.findElement(By.name("selected[]")).isSelected()) {
       wd.findElement(By.name("selected[]")).click();
-    }
+    }*/
   }
 
   public void editContact() {
