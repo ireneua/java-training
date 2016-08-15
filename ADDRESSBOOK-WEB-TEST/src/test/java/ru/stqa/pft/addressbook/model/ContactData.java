@@ -1,7 +1,7 @@
 package ru.stqa.pft.addressbook.model;
 
 public class ContactData {
-  private final String id;
+  private final int id;
   private final String name;
   private final String middlename;
   private final String lastname;
@@ -16,7 +16,7 @@ public class ContactData {
 
 
 
-  public ContactData(String id, String name, String middlename, String lastname, String nickname, String title, String company, String home, String email, String email2, String email22, String year) {
+  public ContactData(int id, String name, String middlename, String lastname, String nickname, String title, String company, String home, String email, String email2, String email22, String year) {
     this.id = id;
     this.name = name;
     this.middlename = middlename;
@@ -32,8 +32,9 @@ public class ContactData {
     this.year = year;
   }
 
+
   public ContactData(String name, String middlename, String lastname, String nickname, String title, String company, String home, String email, String email2, String email22, String year) {
-    this.id = null;
+    this.id = Integer.MAX_VALUE;
     this.name = name;
     this.middlename = middlename;
     this.lastname = lastname;
@@ -84,27 +85,6 @@ public class ContactData {
     return email2;
   }
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    ContactData that = (ContactData) o;
-
-    if (id != null ? !id.equals(that.id) : that.id != null) return false;
-    if (name != null ? !name.equals(that.name) : that.name != null) return false;
-    return lastname != null ? lastname.equals(that.lastname) : that.lastname == null;
-
-  }
-
-  @Override
-  public int hashCode() {
-    int result = id != null ? id.hashCode() : 0;
-    result = 31 * result + (name != null ? name.hashCode() : 0);
-    result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
-    return result;
-  }
-
   public String getEmail22() {
     return email22;
   }
@@ -124,7 +104,28 @@ public class ContactData {
   }
 
 
-  public String getId() {
+  public int getId() {
     return id;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    ContactData that = (ContactData) o;
+
+    if (id != that.id) return false;
+    if (name != null ? !name.equals(that.name) : that.name != null) return false;
+    return lastname != null ? lastname.equals(that.lastname) : that.lastname == null;
+
+  }
+
+  @Override
+  public int hashCode() {
+    int result = id;
+    result = 31 * result + (name != null ? name.hashCode() : 0);
+    result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
+    return result;
   }
 }
