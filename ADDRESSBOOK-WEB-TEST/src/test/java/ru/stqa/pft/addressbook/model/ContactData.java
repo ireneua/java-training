@@ -2,17 +2,62 @@ package ru.stqa.pft.addressbook.model;
 
 public class ContactData {
   private  int id;
-  private final String name;
-  private final String middlename;
-  private final String lastname;
-  private final String nickname;
-  private final String title;
-  private final String company;
-  private final String home;
-  private final String email;
-  private final String email2;
-  private final String email22;
-  private final String year;
+  private  String name;
+  private  String middlename;
+  private  String lastname;
+  private  String nickname;
+  private  String title;
+
+  public void withTitle(String title) {
+    this.title = title;
+  }
+
+  public void withName(String name) {
+    this.name = name;
+  }
+
+  public void withMiddleName(String middlename) {
+    this.middlename = middlename;
+  }
+
+  public void withLastName(String lastname) {
+    this.lastname = lastname;
+  }
+
+  public void withNickname(String nickname) {
+    this.nickname = nickname;
+  }
+
+  public void withCompany(String company) {
+    this.company = company;
+  }
+
+  public void withHome(String home) {
+    this.home = home;
+  }
+
+  public void withEmail(String email) {
+    this.email = email;
+  }
+
+  public void withEmail2(String email2) {
+    this.email2 = email2;
+  }
+
+  public void withEmail22(String email22) {
+    this.email22 = email22;
+  }
+
+  public void withYear(String year) {
+    this.year = year;
+  }
+
+  private  String company;
+  private  String home;
+  private  String email;
+  private  String email2;
+  private  String email22;
+  private  String year;
 
 
   public ContactData(int id, String name, String middlename, String lastname, String nickname, String title, String company, String home, String email, String email2, String email22, String year) {
