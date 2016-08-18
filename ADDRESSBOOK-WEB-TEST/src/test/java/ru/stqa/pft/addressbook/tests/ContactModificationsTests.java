@@ -17,7 +17,9 @@ public class ContactModificationsTests extends TestBase {
   public void ensurePreconditionsForContacts() {
     app.goTo().homePage();
     if (app.contact().conactList().size()==0) {
-      app.contact().createContact(new ContactData("Johny", "Dow", "Po", null, "developer", "Po-dev", null, "indo@test.com8", "indo_double@test.com", "indo8_double@test.com", "1978"));
+      app.contact().createContact(new ContactData()
+              .withName("Judi").withLastName("Jaster").withCompany("CocaCola").withTitle("Dev").withEmail("indo8@test.com").withEmail2("indo_doublex@test.com")
+              .withYear("1937"));
     }
   }
 
@@ -26,7 +28,10 @@ public class ContactModificationsTests extends TestBase {
 
     List<ContactData> before = app.contact().conactList();
     app.contact().editContact(before.size() - 1);
-    ContactData contact = new ContactData(before.get(before.size() - 1).getId(), "Judi", "Jaster", "Ko", "pro", "developer", "Po-dev", "USA", "indo6@test.com", "indo_doublex@test.com", "indo_doublex@test.com", "1967");
+    int id = before.get(before.size() - 1).getId();
+    ContactData contact = new ContactData()
+            .withId(id).withName("Judi").withLastName("Jaster").withCompany("Yahoo").withTitle("QA").withEmail("indo6@test.com").withEmail2("indo_doublex@test.com")
+            .withYear("1987");
     app.contact().fillContactData(contact);
     app.contact().saveUpdatedContact();
     app.contact().returnToHomePage();

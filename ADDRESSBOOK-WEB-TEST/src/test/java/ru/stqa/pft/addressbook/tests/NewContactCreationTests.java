@@ -16,7 +16,9 @@ public class NewContactCreationTests extends TestBase {
     app.goTo().homePage();
     List<ContactData> before = app.contact().conactList();
     app.contact().initContactCreation();
-    ContactData contact = (new ContactData("Jimmy", "Boo", "Po", null, "developer", "Po-dev", null, "indo@test.com", "indo_double@test.com", "indo_double@test.com", "1988"));
+    ContactData contact = (new ContactData()
+            .withName("Judi").withLastName("Jaster").withCompany("Yahoo").withTitle("QA").withEmail("indo6@test.com").withEmail2("indo_doublex@test.com")
+            .withYear("1987"));
     app.contact().fillContactData(contact);
     app.contact().returnToHomePage();
     List<ContactData> after = app.contact().conactList();
