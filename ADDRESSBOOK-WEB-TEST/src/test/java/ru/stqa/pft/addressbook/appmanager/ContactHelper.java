@@ -69,8 +69,8 @@ public class ContactHelper extends HelperBase {
     returnToHomePage();
   }
 
-  public void delete(ContactData deletedContact) {
-    selectContactById(deletedContact.getId());
+  public void delete(ContactData contactData) {
+    selectContactById(contactData.getId());
     deleteContact();
     returnToHomePage();
   }
@@ -114,7 +114,7 @@ public class ContactHelper extends HelperBase {
     return contacts;
   }
 
-  public Set<ContactData> allConact() {
+  public Set<ContactData> allConacts() {
     Set<ContactData> contacts = new HashSet<>();
     List<WebElement> elements = wd.findElements(By.cssSelector("tr[name=entry]"));
     for (WebElement element : elements) {
