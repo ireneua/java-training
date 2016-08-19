@@ -85,9 +85,10 @@ public class ContactHelper extends HelperBase {
 
   public void createContact(ContactData contact) {
     initContactCreation();
-    fillContactData(new ContactData()
+    fillContactData(contact);
+    /*fillContactData(new ContactData()
             .withName("Judi").withLastName("Jaster").withCompany("Yahoo").withTitle("QA").withEmail("indo6@test.com").withEmail2("indo_doublex@test.com")
-            .withYear("1987"));
+            .withYear("1987"));*/
     returnToHomePage();
   }
 
