@@ -1,5 +1,6 @@
 package ru.stqa.pft.addressbook.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
@@ -21,30 +22,22 @@ public class ContactModificationsTests extends TestBase {
     }
   }
 
-  @Test (enabled = false)
+  @Test
   public void testContactModification() {
 
-    Set<ContactData> before = app.contact().allConacts();
-    app.contact().editContact(before.size() - 1);
-    //int id = before.get(before.size() - 1).getId();
-    /*ContactData contact = new ContactData()
-            .withId(id).withName("Judi").withLastName("Jaster").withCompany("Yahoo").withTitle("QA").withEmail("indo6@test.com").withEmail2("indo_doublex@test.com")
-            .withYear("1987");
-    app.contact().fillContactData(contact);
-    app.contact().saveUpdatedContact();
-    app.contact().returnToHomePage();
-    Set<ContactData> after = app.contact().allConacts1();
-    Assert.assertEquals(after.size(), before.size());
+      Set<ContactData> before = app.contact().allConacts();
+      ContactData modifiedContact = before.iterator().next();
+      ContactData contact = new ContactData().withId(modifiedContact.getId()).withLastName("Tresh").withName("Masha")
+              .withEmail("result@test.com");
 
-    before.remove(before.size() - 1);
-    before.add(contact);
-    /* old version
-    Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
-     */
-    /*Comparator<? super ContactData> byId = (Comparator<ContactData>) (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
-    before.sort(byId);
-    after.sort(byId);*/
-    /*Assert.assertEquals(before, after);
-    */
+      app.contact().modifyContact(contact);
+      Set<ContactData> after = app.contact().allConacts();
+      Assert.assertEquals(after.size(), before.size());
+
+      before.remove(modifiedContact);
+      before.add(contact);
+      Assert.assertEquals(after, before);
+
+
   }
 }
