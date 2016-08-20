@@ -5,13 +5,11 @@ public class ContactData {
   private String name;
   private String middlename;
   private String lastname;
-  private String nickname;
   private String title;
   private String company;
   private String home;
   private String email;
   private String email2;
-  private String email22;
   private String year;
 
   public ContactData withId(int id) {
@@ -39,11 +37,6 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withNickname(String nickname) {
-    this.nickname = nickname;
-    return this;
-  }
-
   public ContactData withCompany(String company) {
     this.company = company;
     return this;
@@ -64,11 +57,6 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withEmail22(String email22) {
-    this.email22 = email22;
-    return this;
-  }
-
   public ContactData withYear(String year) {
     this.year = year;
     return this;
@@ -84,10 +72,6 @@ public class ContactData {
 
   public String getLastname() {
     return lastname;
-  }
-
-  public String getNickname() {
-    return nickname;
   }
 
   public String getTitle() {
@@ -129,10 +113,6 @@ public class ContactData {
 
   public String getEmail2() {
     return email2;
-  }
-
-  public String getEmail22() {
-    return email22;
   }
 
   public String getYear() {

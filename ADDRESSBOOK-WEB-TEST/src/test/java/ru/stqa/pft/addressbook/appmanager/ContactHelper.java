@@ -55,14 +55,13 @@ public class ContactHelper extends HelperBase {
   }
 
   public void createContact(ContactData contact) {
-    //selectContactById(contact.getId());
     initContactCreation();
     fillContactData(contact);
     returnToHomePage();
   }
 
-  public void editContact(int x) {
-    wd.findElements(By.xpath(".//*[@id='maintable']/tbody/tr[*]/td[8]/a/img")).get(x).click();
+  public void editContact(int id) {
+    wd.findElement((By.cssSelector("a[href =\"edit.php?id=" + id + "\"]"))).click();
   }
 
   public void deleteContact() {
@@ -78,8 +77,9 @@ public class ContactHelper extends HelperBase {
 
   public void modifyContact(ContactData contact) {
     selectContactById(contact.getId());
-    initContactCreation();
+    editContact(contact.getId());
     fillContactData(contact);
+    saveUpdatedContact();
     returnToHomePage();
   }
 
