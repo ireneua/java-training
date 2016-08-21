@@ -7,10 +7,15 @@ public class ContactData {
   private String lastname;
   private String title;
   private String company;
-  private String home;
+  private String address;
   private String email;
   private String email2;
   private String year;
+  private String homeNumber;
+  private String MobileNumber;
+  private String WorkNumber;
+  private String allPhones;
+
 
   public ContactData withId(int id) {
     this.id = id;
@@ -42,8 +47,8 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withHome(String home) {
-    this.home = home;
+  public ContactData withAddress(String address) {
+    this.address = address;
     return this;
   }
 
@@ -59,6 +64,26 @@ public class ContactData {
 
   public ContactData withYear(String year) {
     this.year = year;
+    return this;
+  }
+
+  public ContactData withHomeNumber(String homeNumber){
+    this.homeNumber = homeNumber;
+    return this;
+  }
+
+  public ContactData withWorkNumber(String workNumber){
+    this.homeNumber = workNumber;
+    return this;
+  }
+
+  public ContactData withMobileNumber(String mobileNumber){
+    this.homeNumber = mobileNumber;
+    return this;
+  }
+
+  public ContactData withAllPhones(String allPhones){
+    this.allPhones = allPhones;
     return this;
   }
 
@@ -78,12 +103,28 @@ public class ContactData {
     return title;
   }
 
+  public String getHomeNumber() {
+    return homeNumber;
+  }
+
   public String getCompany() {
     return company;
   }
 
-  public String getHome() {
-    return home;
+  public String getAddress() {
+    return address;
+  }
+
+  public void setHomeNumber(String homeNumber) {
+    this.homeNumber = homeNumber;
+  }
+
+  public void setMobileNumber(String mobileNumber) {
+    MobileNumber = mobileNumber;
+  }
+
+  public void setWorkNumber(String workNumber) {
+    WorkNumber = workNumber;
   }
 
   @Override
@@ -115,8 +156,18 @@ public class ContactData {
     return email2;
   }
 
+  public String getMobileNumber() {
+    return MobileNumber;
+  }
+
   public String getYear() {
     return year;
+  }
+
+  public String getAllPhones(){ return allPhones;}
+
+  public String getWorkNumber() {
+    return WorkNumber;
   }
 
   @Override
