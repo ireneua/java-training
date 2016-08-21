@@ -20,11 +20,6 @@ public class Groups extends ForwardingSet<GroupData>{
     this.delegate = new HashSet<>();
   }
 
-  @Override
-  protected Set<GroupData> delegate() {
-    return delegate;
-  }
-
   public Groups withAdded(GroupData group){
     Groups groups = new Groups(this);
     groups.add(group);
@@ -35,5 +30,10 @@ public class Groups extends ForwardingSet<GroupData>{
     Groups groups = new Groups(this);
     groups.remove(group);
     return groups;
+  }
+
+  @Override
+  protected Set<GroupData> delegate() {
+    return delegate;
   }
 }

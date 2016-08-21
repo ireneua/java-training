@@ -4,11 +4,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.Contacts;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by irener on 7/31/16.
@@ -32,7 +31,7 @@ public class ContactHelper extends HelperBase {
     type(By.name("firstname"), contactData.getName());
     type(By.name("middlename"), contactData.getMiddlename());
     type(By.name("lastname"), contactData.getLastname());
-    type(By.name("nickname"), contactData.getNickname());
+    //type(By.name("nickname"), contactData.getNickname());
     type(By.name("title"), contactData.getTitle());
     type(By.name("company"), contactData.getCompany());
     type(By.name("home"), contactData.getHome());
@@ -114,8 +113,8 @@ public class ContactHelper extends HelperBase {
     return contacts;
   }
 
-  public Set<ContactData> allConacts() {
-    Set<ContactData> contacts = new HashSet<>();
+  public Contacts allConacts() {
+    Contacts contacts = new Contacts();
     List<WebElement> elements = wd.findElements(By.cssSelector("tr[name=entry]"));
     for (WebElement element : elements) {
       String lastName = element.findElement(By.xpath(".//td[2]")).getText();
