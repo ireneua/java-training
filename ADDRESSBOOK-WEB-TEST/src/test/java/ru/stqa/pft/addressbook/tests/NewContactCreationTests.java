@@ -19,11 +19,10 @@ public class NewContactCreationTests extends TestBase {
             .withName("Judi").withLastName("Jaster").withCompany("Yahoo").withTitle("QA").withEmail("indo6@test.com").withEmail2("indo_doublex@test.com")
             .withYear("1987"));
     app.contact().createContact(contact);
+    assertThat(app.contact().getContactCount(), equalTo(before.size() + 1));
     Contacts after = app.contact().allConacts();
-    assertThat(after.size(), equalTo(before.size() + 1));
-    contact.withId((after.stream().mapToInt((g) -> g.getId()).max().getAsInt()));
 
-    assertThat(after, equalTo(before.withAdded(contact)));
+    assertThat(after, equalTo(before.withAdded(contact.withId((after.stream().mapToInt((g) -> g.getId()).max().getAsInt())))));
 
 
   }

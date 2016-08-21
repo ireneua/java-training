@@ -17,11 +17,11 @@ public class GroupCreationTests extends TestBase {
     Groups before = app.group().all();
     GroupData group = new GroupData().withName("Pushkin");
     app.group().create(group);
+    assertThat(app.group().getGroupCount(), equalTo(before.size() + 1));
     Groups after = app.group().all();
-    assertThat(after.size(), equalTo(before.size() + 1));
 
-    group.withId((after.stream().mapToInt((g) -> g.getId()).max().getAsInt()));
-    assertThat(after, equalTo(before.withAdded(group)));
+    assertThat(after,
+            equalTo(before.withAdded(group.withId((after.stream().mapToInt((g) -> g.getId()).max().getAsInt())))));
   }
 
 }
