@@ -7,7 +7,9 @@ import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import  java.util.Set;
 
 /**
  * Created by irener on 7/31/16.
@@ -85,7 +87,8 @@ public class ContactHelper extends HelperBase {
   }
 
   private void selectContactById(int id) {
-    wd.findElement((By.cssSelector("input[value='" + id + "']"))).click();
+    wd.findElement((By.cssSelector("a[href*='edit.php?id=" + id + "']"))).click();
+//    wd.findElement((By.cssSelector("input[value='" + id + "']"))).click();
   }
 
   public void saveUpdatedContact() {
@@ -139,12 +142,29 @@ public class ContactHelper extends HelperBase {
     return new Contacts(contactCache);
   }
 
+  public Set<ContactData> all(){
+    Set<ContactData> contacts = new HashSet<>();
+    List<WebElement> rows = wd.findElements(By.name("entry"));
+    for (WebElement row : rows) {
+      List<WebElement> cells = row.findElements(By.tagName("td"));
+      int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
+      String lastName = cells.get(1).getText();
+      String firstName = cells.get(2).getText();
+      String allPhones = cells.get(5).getText();
+
+      contacts.add(new ContactData()
+              .withName(firstName).withLastName(lastName)
+              .withId(id).withAllPhones(allPhones));
+    }
+    return contacts;
+
+  }
 
   public ContactData infoFromEditForm(ContactData contact) {
     selectContactById(contact.getId());
     String firstName = wd.findElement(By.name("firstname")).getAttribute("value");
     String lastName = wd.findElement(By.name("lastname")).getAttribute("value");
-    String home = wd.findElement(By.name("nome")).getAttribute("value");
+    String home = wd.findElement(By.name("home")).getAttribute("value");
     String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
     String work = wd.findElement(By.name("work")).getAttribute("value");
     String email = wd.findElement(By.name("email")).getAttribute("value");
