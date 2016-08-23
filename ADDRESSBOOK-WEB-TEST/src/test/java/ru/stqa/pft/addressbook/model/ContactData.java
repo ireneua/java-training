@@ -10,6 +10,7 @@ public class ContactData {
   private String address;
   private String email;
   private String email2;
+  private String email3;
   private String year;
   private String homeNumber;
   private String mobileNumber;
@@ -63,6 +64,12 @@ public class ContactData {
     return this;
   }
 
+  public ContactData withEmail3(String email3) {
+    this.email3 = email3;
+    return this;
+  }
+
+
   public ContactData withYear(String year) {
     this.year = year;
     return this;
@@ -90,6 +97,11 @@ public class ContactData {
 
   public ContactData withAllEmails(String allEmails){
      this.allEmails = allEmails;
+    return this;
+  }
+
+  public ContactData withAllAddress(String address){
+    this.address = address;
     return this;
   }
 
@@ -121,17 +133,6 @@ public class ContactData {
     return address;
   }
 
-  public void setHomeNumber(String homeNumber) {
-    this.homeNumber = homeNumber;
-  }
-
-  public void setMobileNumber(String mobileNumber) {
-    this.mobileNumber = mobileNumber;
-  }
-
-  public void setWorkNumber(String workNumber) {
-     this.workNumber = workNumber;
-  }
 
   @Override
   public boolean equals(Object o) {
@@ -162,6 +163,10 @@ public class ContactData {
     return email2;
   }
 
+  public String getEmail3() {
+    return email3;
+  }
+
   public String getMobileNumber() {
     return mobileNumber;
   }
@@ -169,6 +174,7 @@ public class ContactData {
   public String getYear() {
     return year;
   }
+
   public String getAllPhones(){
     return allPhones;}
 
