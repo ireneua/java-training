@@ -12,9 +12,10 @@ public class ContactData {
   private String email2;
   private String year;
   private String homeNumber;
-  private String MobileNumber;
-  private String WorkNumber;
+  private String mobileNumber;
+  private String workNumber;
   private String allPhones;
+  private String allEmails;
 
 
   public ContactData withId(int id) {
@@ -73,17 +74,22 @@ public class ContactData {
   }
 
   public ContactData withWorkNumber(String workNumber){
-    this.homeNumber = workNumber;
+    this.workNumber = workNumber;
     return this;
   }
 
   public ContactData withMobileNumber(String mobileNumber){
-    this.homeNumber = mobileNumber;
+    this.mobileNumber = mobileNumber;
     return this;
   }
 
   public ContactData withAllPhones(String allPhones){
     this.allPhones = allPhones;
+    return this;
+  }
+
+  public ContactData withAllEmails(String allEmails){
+     this.allEmails = allEmails;
     return this;
   }
 
@@ -120,11 +126,11 @@ public class ContactData {
   }
 
   public void setMobileNumber(String mobileNumber) {
-    MobileNumber = mobileNumber;
+    this.mobileNumber = mobileNumber;
   }
 
   public void setWorkNumber(String workNumber) {
-    WorkNumber = workNumber;
+     this.workNumber = workNumber;
   }
 
   @Override
@@ -157,18 +163,21 @@ public class ContactData {
   }
 
   public String getMobileNumber() {
-    return MobileNumber;
+    return mobileNumber;
   }
 
   public String getYear() {
     return year;
   }
-
-  public String getAllPhones(){ return allPhones;}
+  public String getAllPhones(){
+    return allPhones;}
 
   public String getWorkNumber() {
-    return WorkNumber;
+    return workNumber;
   }
+
+  public String getAllEmails(){
+    return allEmails;}
 
   @Override
   public String toString() {
@@ -187,6 +196,7 @@ public class ContactData {
   public void setId(int id) {
     this.id = id;
   }
+
 }
 
 

@@ -20,7 +20,7 @@ public class NewContactCreationTests extends TestBase {
             .withYear("1987").withHomeNumber("6666").withMobileNumber("999").withWorkNumber("777"));
     app.contact().createContact(contact);
     assertThat(app.contact().getContactCount(), equalTo(before.size() + 1));
-    Contacts after = app.contact().allConacts();
+    Contacts after =  app.contact().allConacts();
 
     assertThat(after, equalTo(before.withAdded(contact.withId((after.stream().mapToInt((g) -> g.getId()).max().getAsInt())))));
 

@@ -1,7 +1,5 @@
 package ru.stqa.pft.addressbook.tests;
 
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.MatcherAssert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
@@ -9,13 +7,13 @@ import ru.stqa.pft.addressbook.model.ContactData;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.hamcrest.MatcherAssert.*;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
- * Created by irener on 8/21/16.
+ * Created by irener on 8/23/16.
  */
-public class ContactPhoneTests extends TestBase{
+public class ContactEmailTests extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditionsForContacts() {
@@ -27,24 +25,26 @@ public class ContactPhoneTests extends TestBase{
     }
   }
 
+
   @Test(enabled = true)
-  public void testContactPhones(){
+  public void testContactPhones() {
     app.goTo().homePage();
     ContactData contact = app.contact().all().iterator().next();
     ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 
-    assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromEditForm)));
+    assertThat(contact.getAllEmails(), equalTo(mergeEmails(contactInfoFromEditForm)));
 
   }
 
-  private String mergePhones(ContactData contact) {
-    return Arrays.asList(contact.getHomeNumber(), contact.getMobileNumber(), contact.getWorkNumber())
+  private String mergeEmails(ContactData contact) {
+    return Arrays.asList(contact.getEmail(), contact.getEmail2())
             .stream().filter((s) -> s != null).filter((s) -> !s.equals(""))
-            .map(ContactPhoneTests::cleaned)
+            .map(ContactEmailTests::cleaned)
             .collect(Collectors.joining("\n"));
   }
 
-  public static String cleaned(String phone){
-    return phone.replaceAll("\\s", "").replaceAll("-()","");
+
+  public static String cleaned(String email){
+    return email.replaceAll("\\s", "").replaceAll("-()","");
   }
 }
