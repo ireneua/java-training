@@ -88,7 +88,10 @@ public class ContactHelper extends HelperBase {
 
   private void selectContactById(int id) {
     wd.findElement((By.cssSelector("a[href*='edit.php?id=" + id + "']"))).click();
-//    wd.findElement((By.cssSelector("input[value='" + id + "']"))).click();
+  }
+
+  private void  clickContactImageById(int id){
+    wd.findElement((By.cssSelector("a[href*='view.php?id=" + id + "']"))).click();
   }
 
   public void saveUpdatedContact() {
@@ -176,5 +179,13 @@ public class ContactHelper extends HelperBase {
     returnToHomePage();
     return new ContactData().withId(contact.getId()).withName(firstName).withLastName(lastName).withHomeNumber(home)
             .withMobileNumber(mobile).withWorkNumber(work).withEmail(email).withEmail2(email2).withEmail3(email3).withAddress(address);
+  }
+
+
+  public ContactData infoFromViewForm(ContactData contact){
+    clickContactImageById(contact.getId());
+    String allContactData = wd.findElement((By.id("content"))).getText();
+    returnToHomePage();
+    return new ContactData().withAllContactInfo(allContactData);
   }
 }
