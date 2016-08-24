@@ -83,7 +83,7 @@ public class ContactInformationTests extends TestBase {
             .map(ContactInformationTests::cleanedInfo)
             .collect(Collectors.joining("\n"));
 
-    return name + "\n" + lastName +"\n" + address + "\n\n" + homeNumber + "\n" + mobileNumber + "\n" + workNumber + "\n"
+    return name + " " + lastName +"\n" + address + "\n\n" + homeNumber + "\n" + mobileNumber + "\n" + workNumber + "\n\n"
             + email + "\n" + email2 + "\n" + email3;
   }
 
