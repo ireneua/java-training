@@ -38,62 +38,21 @@ public class ContactInformationTests extends TestBase {
   }
 
   private String mergeContactData(ContactData contact) {
-    String name = Arrays.asList(contact.getName())
-            .stream().filter((s) -> s != null).filter((s) -> !s.equals(""))
-            .map(ContactInformationTests::cleanedInfo)
-            .collect(Collectors.joining("\n"));
+      if (!(contact.getHomeNumber().equals(""))) {
+        contact.withHomeNumber("H: " + contact.getHomeNumber());
+      }
+      if (!(contact.getMobileNumber().equals(""))) {
+        contact.withMobileNumber("M: " + contact.getMobileNumber());
+      }
+      if (!(contact.getWorkNumber().equals(""))) {
+        contact.withWorkNumber("W: " + contact.getWorkNumber());
+      }
+      return Arrays.asList(contact.getName() + " " + contact.getLastname() + "\n" + contact.getAddress() + "\n",
+              contact.getHomeNumber(), contact.getMobileNumber(), contact.getWorkNumber())
+              .stream().filter((s) -> !s.equals(""))
+              .collect(Collectors.joining("\n"));
 
-    String lastName = Arrays.asList(contact.getLastname())
-            .stream().filter((s) -> s != null).filter((s) -> !s.equals(""))
-            .map(ContactInformationTests::cleanedInfo)
-            .collect(Collectors.joining("\n"));
-
-    String address = Arrays.asList(contact.getAddress())
-            .stream().filter((s) -> s != null).filter((s) -> !s.equals(""))
-            .map(ContactInformationTests::cleanedInfo)
-            .collect(Collectors.joining("\n"));
-
-    String homeNumber = "H: " + Arrays.asList(contact.getHomeNumber())
-            .stream().filter((s) -> s != null).filter((s) -> !s.equals(""))
-            .map(ContactInformationTests::cleanedPhone)
-            .collect(Collectors.joining("\n"));
-
-    String mobileNumber = "M: " + Arrays.asList(contact.getMobileNumber())
-            .stream().filter((s) -> s != null).filter((s) -> !s.equals(""))
-            .map(ContactInformationTests::cleanedPhone)
-            .collect(Collectors.joining("\n"));
-
-    String workNumber = "W: " + Arrays.asList(contact.getWorkNumber())
-            .stream().filter((s) -> s != null).filter((s) -> !s.equals(""))
-            .map(ContactInformationTests::cleanedPhone)
-            .collect(Collectors.joining("\n"));
-
-    String email = Arrays.asList(contact.getEmail())
-            .stream().filter((s) -> s != null).filter((s) -> !s.equals(""))
-            .map(ContactInformationTests::cleanedInfo)
-            .collect(Collectors.joining("\n"));
-
-    String email2 = Arrays.asList(contact.getEmail2())
-            .stream().filter((s) -> s != null).filter((s) -> !s.equals(""))
-            .map(ContactInformationTests::cleanedInfo)
-            .collect(Collectors.joining("\n"));
-
-    String email3 = Arrays.asList(contact.getEmail3())
-            .stream().filter((s) -> s != null).filter((s) -> !s.equals(""))
-            .map(ContactInformationTests::cleanedInfo)
-            .collect(Collectors.joining("\n"));
-
-    return name + " " + lastName +"\n" + address + "\n\n" + homeNumber + "\n" + mobileNumber + "\n" + workNumber + "\n\n"
-            + email + "\n" + email2 + "\n" + email3;
+  }
+  
   }
 
-  private static String cleanedInfo(String info) {
-    return info.replaceAll("-()","");
-  }
-
-  public static String cleanedPhone(String phone) {
-    return phone.replaceAll("\\s", "").replaceAll("-()", "");
-  }
-
-
-}
