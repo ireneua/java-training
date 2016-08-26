@@ -53,6 +53,6 @@ public class ContactInformationTests extends TestBase {
               .collect(Collectors.joining("\n"));
 
   }
-  
+
   }
 
