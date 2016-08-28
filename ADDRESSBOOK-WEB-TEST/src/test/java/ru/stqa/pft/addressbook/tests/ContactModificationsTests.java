@@ -34,7 +34,7 @@ public class ContactModificationsTests extends TestBase {
             .withEmail("result@test.com");
 
     app.contact().modifyContact(contact);
-    assertThat(app.contact().getContactCount(), equalTo(before.size() + 1));
+    assertThat(app.contact().getContactCount(), equalTo(before.size()));
     Contacts after = app.contact().allConacts();
 
     assertEquals(before.size(), after.size());

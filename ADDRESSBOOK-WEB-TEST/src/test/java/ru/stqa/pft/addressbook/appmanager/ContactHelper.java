@@ -66,23 +66,19 @@ public class ContactHelper extends HelperBase {
   }
 
   public void deleteContact() {
-    click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
-    wd.switchTo().alert().accept();
+   click( (By.xpath("//input[@value='Delete']")));
   }
 
   public void delete(ContactData contactData) {
     selectContactById(contactData.getId());
     deleteContact();
-    //contactCache = null;
     returnToHomePage();
   }
 
   public void modifyContact(ContactData contact) {
-    selectContactById(contact.getId());
     editContact(contact.getId());
     fillContactData(contact);
     saveUpdatedContact();
-    //contactCache = null;
     returnToHomePage();
   }
 
@@ -133,7 +129,6 @@ public class ContactHelper extends HelperBase {
       String firstName = cells.get(2).getText();
       String[] phones = cells.get(5).getText().split("\n");
 
-      /*contactCache.add(new ContactData()*/
               ContactData contact = new ContactData().withName(firstName).withLastName(lastName).withCompany("Yahoo")
                       .withTitle("QA").withEmail("indo6@test.com").withEmail2("indo_doublex@test.com")
                       .withYear("1987").withId(id);
