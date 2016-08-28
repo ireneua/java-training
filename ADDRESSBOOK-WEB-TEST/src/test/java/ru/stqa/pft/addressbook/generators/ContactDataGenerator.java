@@ -1,5 +1,9 @@
 package ru.stqa.pft.addressbook.generators;
 
+import com.beust.jcommander.JCommander;
+import com.beust.jcommander.Parameter;
+import com.beust.jcommander.ParameterException;
+import com.google.gson.Gson;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.GroupData;
 
@@ -15,14 +19,30 @@ import java.util.List;
  */
 public class ContactDataGenerator {
 
+  @Parameter(names = "-c", description = "Contacts count")
+  public int count;
+
+  @Parameter(names = "-f", description = "Target file")
+  public String file;
+
   public static void main(String[] args) throws IOException {
 
-    int count = Integer.parseInt(args[0]);
-    File file = new File(args[1]);
+    ContactDataGenerator generator = new ContactDataGenerator();
+    JCommander jCommander = new JCommander(generator);
+    try{
+      jCommander.parse(args);
+    } catch (ParameterException ex){
+      jCommander.usage();
+      return;
+    }
+    generator.run();
+
+  }
+
+  private void run() throws IOException {
 
     List<ContactData> contacts = generateContacts(count);
-    saveContacts(contacts,file);
-
+    saveContacts(contacts, new File(file));
   }
 
   private static void saveContacts(List<ContactData> contacts, File file) throws IOException {
@@ -32,6 +52,14 @@ public class ContactDataGenerator {
       writer.write(String.format("%s;%s;%s;%s\n",
               contact.getName(), contact.getLastname(), contact.getEmail(), contact.getHomeNumber()));
     }
+    writer.close();
+  }
+
+  private void saveContactsAsJson(List<GroupData> contacts, File file) throws IOException {
+    Gson gson = new Gson();
+    String json = gson.toJson(contacts);
+    Writer writer = new FileWriter(file);
+    writer.write(json);
     writer.close();
   }
 
