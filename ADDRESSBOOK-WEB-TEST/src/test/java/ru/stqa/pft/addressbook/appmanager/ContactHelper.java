@@ -38,6 +38,7 @@ public class ContactHelper extends HelperBase {
     type(By.name("home"), contactData.getAddress());
     type(By.name("email"), contactData.getEmail());
     type(By.name("email2"), contactData.getEmail2());
+    attach(By.name("photo"), contactData.getPhoto());
 
     if (!wd.findElement(By.xpath("//div[@id='content']/form/select[1]//option[7]")).isSelected()) {
       wd.findElement(By.xpath("//div[@id='content']/form/select[1]//option[7]")).click();
@@ -57,7 +58,6 @@ public class ContactHelper extends HelperBase {
   public void createContact(ContactData contact) {
     initContactCreation();
     fillContactData(contact);
-    contactCache = null;
     returnToHomePage();
   }
 

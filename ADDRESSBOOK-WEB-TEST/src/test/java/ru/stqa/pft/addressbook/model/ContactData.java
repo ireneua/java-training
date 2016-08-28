@@ -23,7 +23,6 @@ public class ContactData {
   private File photo;
 
 
-
   public ContactData withId(int id) {
     this.id = id;
     return this;
@@ -109,6 +108,12 @@ public class ContactData {
     return  this;
   }
 
+
+  public ContactData withPhoto(File photo) {
+    this.photo = photo;
+    return this;
+  }
+
   public String getName() {
     return name;
   }
@@ -155,6 +160,10 @@ public class ContactData {
 
   public String getYear() {
     return year;
+  }
+
+  public File getPhoto() {
+    return photo;
   }
 
   public String getAllPhones(){
