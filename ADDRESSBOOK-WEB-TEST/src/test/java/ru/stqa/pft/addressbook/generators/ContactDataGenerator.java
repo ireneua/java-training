@@ -4,6 +4,7 @@ import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.ParameterException;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.GroupData;
 
@@ -25,6 +26,9 @@ public class ContactDataGenerator {
   @Parameter(names = "-f", description = "Target file")
   public String file;
 
+  @Parameter(names = "-d", description = "data format")
+  public String format;
+
   public static void main(String[] args) throws IOException {
 
     ContactDataGenerator generator = new ContactDataGenerator();
@@ -42,7 +46,13 @@ public class ContactDataGenerator {
   private void run() throws IOException {
 
     List<ContactData> contacts = generateContacts(count);
-    saveContacts(contacts, new File(file));
+    if (format.equals("csv")) {
+      saveContacts(contacts, new File(file));
+    } else if (format.equals("json")) {
+      saveContactsAsJson(contacts, new File(file));
+    } else {
+      System.out.println("Unrecognized format " + format);
+    }
   }
 
   private static void saveContacts(List<ContactData> contacts, File file) throws IOException {
@@ -55,8 +65,9 @@ public class ContactDataGenerator {
     writer.close();
   }
 
-  private void saveContactsAsJson(List<GroupData> contacts, File file) throws IOException {
-    Gson gson = new Gson();
+
+  private void saveContactsAsJson(List<ContactData> contacts, File file) throws IOException {
+    Gson gson = new GsonBuilder().setPrettyPrinting().create();
     String json = gson.toJson(contacts);
     Writer writer = new FileWriter(file);
     writer.write(json);
