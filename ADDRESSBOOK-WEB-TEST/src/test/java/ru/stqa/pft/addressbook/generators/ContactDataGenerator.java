@@ -44,8 +44,8 @@ public class ContactDataGenerator {
   }
 
   private void run() throws IOException {
-
     List<ContactData> contacts = generateContacts(count);
+
     if (format.equals("csv")) {
       saveContacts(contacts, new File(file));
     } else if (format.equals("json")) {
@@ -67,11 +67,11 @@ public class ContactDataGenerator {
 
 
   private void saveContactsAsJson(List<ContactData> contacts, File file) throws IOException {
-    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
     String json = gson.toJson(contacts);
-    Writer writer = new FileWriter(file);
-    writer.write(json);
-    writer.close();
+    try (Writer writer = new FileWriter(file)) {
+      writer.write(json);
+    }
   }
 
   private static List<ContactData> generateContacts(int count) {

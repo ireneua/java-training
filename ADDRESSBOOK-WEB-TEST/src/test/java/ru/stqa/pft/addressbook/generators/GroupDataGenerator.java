@@ -44,6 +44,7 @@ public class GroupDataGenerator {
 
   private void run() throws IOException {
     List<GroupData> groups = generateGroups(count);
+
     if (format.equals("csv")) {
       saveGroups(groups, new File(file));
     } else if (format.equals("json")) {
@@ -63,11 +64,13 @@ public class GroupDataGenerator {
   }
 
   private void saveGroupsAsJson(List<GroupData> groups, File file) throws IOException {
-    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
     String json = gson.toJson(groups);
-    Writer writer = new FileWriter(file);
-    writer.write(json);
-    writer.close();
+
+   try (Writer writer = new FileWriter(file)){
+     writer.write(json);
+   }
+
   }
 
   private List<GroupData> generateGroups(int count) {
