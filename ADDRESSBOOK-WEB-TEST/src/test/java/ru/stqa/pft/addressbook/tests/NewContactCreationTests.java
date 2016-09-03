@@ -6,8 +6,6 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
-import ru.stqa.pft.addressbook.model.GroupData;
-
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -25,7 +23,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class NewContactCreationTests extends TestBase {
 
   @DataProvider
-  public Iterator<Object[]> validContact() throws IOException {
+  public Iterator<Object[]> validContacts() throws IOException {
+
     List<Object[]> list = new ArrayList<Object[]>();
     try (BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.json")))) {
       String json = "";
@@ -37,23 +36,23 @@ public class NewContactCreationTests extends TestBase {
       }
 
       Gson gson = new Gson();
-      List<GroupData> groups = gson.fromJson(json, new TypeToken<List<GroupData>>() {
+      List<ContactData> contacts = gson.fromJson(json, new TypeToken<List<ContactData>>() {
       }.getType());
-      return groups.stream().map((g) -> new Object[]{g}).collect(Collectors.toList()).iterator();
+      return contacts.stream().map((g) -> new Object[]{g}).collect(Collectors.toList()).iterator();
     }
   }
 
 
   @Test(dataProvider = "validContacts")
 
-  public void testNewContactCreation() {
+  public void testNewContactCreation(ContactData contact) {
 
     app.goTo().homePage();
     Contacts before = app.contact().allConacts();
-    File photo = new File("src/test/resources/123.jpg");
-    ContactData contact = (new ContactData()
+    //File photo = new File("src/test/resources/123.jpg");
+    /*ContactData contact = (new ContactData()
             .withName("Judi").withLastName("Jaster").withCompany("Yahoo").withTitle("QA").withEmail("indo6@test.com").withEmail2("indo_doublex@test.com")
-            .withYear("1987").withHomeNumber("6666").withMobileNumber("999").withWorkNumber("777").withPhoto(photo));
+            .withYear("1987").withHomeNumber("6666").withMobileNumber("999").withWorkNumber("777").withPhoto(photo));*/
     app.contact().createContact(contact);
     assertThat(app.contact().getContactCount(), equalTo(before.size() + 1));
     Contacts after =  app.contact().allConacts();

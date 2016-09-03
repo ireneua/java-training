@@ -1,37 +1,20 @@
 [
   {
-    "id": 2147483647,
     "name": "Contact_name 0",
     "lastname": "contact_lastname 0",
     "email": "email@email.com 0",
     "homeNumber": "9349834 0"
   },
   {
-    "id": 2147483647,
     "name": "Contact_name 1",
     "lastname": "contact_lastname 1",
     "email": "email@email.com 1",
     "homeNumber": "9349834 1"
   },
   {
-    "id": 2147483647,
     "name": "Contact_name 2",
     "lastname": "contact_lastname 2",
     "email": "email@email.com 2",
     "homeNumber": "9349834 2"
-  },
-  {
-    "id": 2147483647,
-    "name": "Contact_name 3",
-    "lastname": "contact_lastname 3",
-    "email": "email@email.com 3",
-    "homeNumber": "9349834 3"
-  },
-  {
-    "id": 2147483647,
-    "name": "Contact_name 4",
-    "lastname": "contact_lastname 4",
-    "email": "email@email.com 4",
-    "homeNumber": "9349834 4"
   }
 ]

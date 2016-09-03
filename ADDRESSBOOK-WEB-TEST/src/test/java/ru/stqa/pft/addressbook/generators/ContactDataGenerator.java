@@ -6,7 +6,6 @@ import com.beust.jcommander.ParameterException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import ru.stqa.pft.addressbook.model.ContactData;
-import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -60,7 +59,8 @@ public class ContactDataGenerator {
     Writer writer = new FileWriter(file);
     for (ContactData contact: contacts){
       writer.write(String.format("%s;%s;%s;%s\n",
-              contact.getName(), contact.getLastname(), contact.getEmail(), contact.getHomeNumber()));
+              contact.getName(), contact.getLastname(),
+              contact.getEmail(), contact.getHomeNumber()));
     }
     writer.close();
   }
@@ -69,6 +69,7 @@ public class ContactDataGenerator {
   private void saveContactsAsJson(List<ContactData> contacts, File file) throws IOException {
     Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
     String json = gson.toJson(contacts);
+
     try (Writer writer = new FileWriter(file)) {
       writer.write(json);
     }

@@ -55,10 +55,11 @@ public class GroupDataGenerator {
   }
 
   private void saveGroups(List<GroupData> groups, File file) throws IOException {
-    System.out.println(new File(".").getAbsoluteFile());
+    //System.out.println(new File(".").getAbsoluteFile());
     Writer writer = new FileWriter(file);
     for (GroupData group : groups) {
-      writer.write(String.format("%s;%s;%s\n", group.getName(), group.getHeader(), group.getFooter()));
+      writer.write(String.format("%s;%s;%s\n",
+              group.getName(), group.getHeader(), group.getFooter()));
     }
     writer.close();
   }
@@ -70,7 +71,6 @@ public class GroupDataGenerator {
    try (Writer writer = new FileWriter(file)){
      writer.write(json);
    }
-
   }
 
   private List<GroupData> generateGroups(int count) {
@@ -81,5 +81,4 @@ public class GroupDataGenerator {
     }
     return groups;
   }
-
 }

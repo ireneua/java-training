@@ -17,11 +17,11 @@ public class GroupModificationTests extends TestBase {
   public void ensurePreconditions() {
     app.goTo().groupPage();
     if (app.group().list().size() == 0) {
-      app.group().create(new GroupData().withName("Petrov"));
+      app.group().create(new GroupData().withName("Petrov").withFooter("footer").withHeader("header"));
     }
   }
 
-  @Test(enabled = true)
+  @Test
 
   public void testGroupModification() {
 
@@ -33,7 +33,7 @@ public class GroupModificationTests extends TestBase {
     assertThat(app.group().getGroupCount(), equalTo(before.size()));
     Groups after = app.group().all();
 
-    assertThat(after, equalTo(before.withoutAdded(modifiedGroup).withoutAdded(group)));
+    assertThat(after, equalTo(before.withoutAdded(modifiedGroup).withAdded(group)));
 
   }
 
