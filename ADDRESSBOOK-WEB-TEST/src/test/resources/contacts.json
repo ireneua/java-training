@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Contact_name 0",
+    "lastname": "contact_lastname 0",
+    "email": "email@email.com 0",
+    "homeNumber": "9349834 0"
+  },
+  {
+    "name": "Contact_name 1",
+    "lastname": "contact_lastname 1",
+    "email": "email@email.com 1",
+    "homeNumber": "9349834 1"
+  },
+  {
+    "name": "Contact_name 2",
+    "lastname": "contact_lastname 2",
+    "email": "email@email.com 2",
+    "homeNumber": "9349834 2"
+  }
+]
