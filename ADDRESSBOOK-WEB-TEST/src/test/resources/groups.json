@@ -3,7 +3,9 @@
     "name": "Contact_name 0",
     "lastname": "contact_lastname 0",
     "email": "email@email.com 0",
-    "homeNumber": "9349834 0"
+    "homeNumber": "9349834 0",
+    "header":"header 0",
+    "footer":"footer 0"
   }/*,
   {
     "name": "Contact_name 1",
