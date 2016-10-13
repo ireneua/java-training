@@ -5,6 +5,8 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.File;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "addressbook")
@@ -61,6 +63,7 @@ public class ContactData {
   private String allPhones;
 
   @Transient
+
   private String allEmails;
 
   @Transient
@@ -69,6 +72,11 @@ public class ContactData {
   @Column(name = "photo")
   @Type(type = "text")
   private String photo;
+
+  @ManyToMany(fetch = FetchType.EAGER)
+  @JoinTable(name = "address_in_groups",
+          joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
+  private Set<GroupData> groups = new HashSet<GroupData>();
 
 
   public ContactData withId(int id) {
@@ -126,36 +134,35 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withHomeNumber(String homeNumber){
+  public ContactData withHomeNumber(String homeNumber) {
     this.homeNumber = homeNumber;
     return this;
   }
 
-  public ContactData withWorkNumber(String workNumber){
+  public ContactData withWorkNumber(String workNumber) {
     this.workNumber = workNumber;
     return this;
   }
 
-  public ContactData withMobileNumber(String mobileNumber){
+  public ContactData withMobileNumber(String mobileNumber) {
     this.mobileNumber = mobileNumber;
     return this;
   }
 
-  public ContactData withAllPhones(String allPhones){
+  public ContactData withAllPhones(String allPhones) {
     this.allPhones = allPhones;
     return this;
   }
 
-  public ContactData withAllEmails(String allEmails){
-     this.allEmails = allEmails;
+  public ContactData withAllEmails(String allEmails) {
+    this.allEmails = allEmails;
     return this;
   }
 
   public ContactData withAllContactInfo(String allContactData) {
     this.allContactData = allContactData;
-    return  this;
+    return this;
   }
-
 
   public ContactData withPhoto(File photo) {
     this.photo = photo.getPath();
@@ -211,21 +218,27 @@ public class ContactData {
   }
 
   public File getPhoto() {
-    return new File (photo);
+    return new File(photo);
   }
 
-  public String getAllPhones(){
-    return allPhones;}
+  public String getAllPhones() {
+    return allPhones;
+  }
 
   public String getWorkNumber() {
     return workNumber;
   }
 
-  public String getAllEmails(){
-    return allEmails;}
+  public String getAllEmails() {
+    return allEmails;
+  }
 
-  public String getAllContactData(){
+  public String getAllContactData() {
     return allContactData;
+  }
+
+  public Groups getGroups() {
+    return new Groups(groups);
   }
 
   @Override
@@ -264,7 +277,6 @@ public class ContactData {
     return lastname != null ? lastname.equals(that.lastname) : that.lastname == null;
 
   }
-
 
 }
 
